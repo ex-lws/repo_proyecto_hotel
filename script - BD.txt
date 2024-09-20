@@ -1,0 +1,78 @@
+CREATE DATABASE reservaciones
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Spanish_Mexico.1252'
+    LC_CTYPE = 'Spanish_Mexico.1252'
+    LOCALE_PROVIDER = 'libc'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+
+CREATE TABLE IF NOT EXISTS public.cliente
+(
+    nombres character varying(50) COLLATE pg_catalog."default",
+    apellido_materno character varying(50) COLLATE pg_catalog."default",
+    apellido_paterno character varying(50) COLLATE pg_catalog."default",
+    correo character varying(100) COLLATE pg_catalog."default",
+    telefono integer,
+    direccion character varying(100) COLLATE pg_catalog."default",
+    id_cliente serial NOT NULL,
+    CONSTRAINT cliente_pkey PRIMARY KEY (id_cliente)
+);
+
+CREATE TABLE IF NOT EXISTS public.habitacion
+(
+    numero_habitacion integer,
+    tipo_habitacion character varying(40) COLLATE pg_catalog."default",
+    precio_noche double precision,
+    estado character varying(40) COLLATE pg_catalog."default",
+    id_habitacion serial NOT NULL,
+    CONSTRAINT habitacion_pkey PRIMARY KEY (id_habitacion)
+);
+
+CREATE TABLE IF NOT EXISTS public.pago
+(
+    id_pago serial NOT NULL,
+    fecha_pago timestamp with time zone,
+    monto_pagado double precision,
+    metodo_pago character varying(40) COLLATE pg_catalog."default",
+    id_reservacion integer,
+    CONSTRAINT pago_pkey PRIMARY KEY (id_pago)
+);
+
+CREATE TABLE IF NOT EXISTS public.reservacion
+(
+    check_in timestamp without time zone,
+    check_out timestamp without time zone,
+    fecha_reservacionn timestamp with time zone,
+    total double precision,
+    id_cliente integer,
+    id_habitacion integer,
+    id_reservacion serial NOT NULL,
+    CONSTRAINT reservacion_pkey PRIMARY KEY (id_reservacion)
+);
+
+ALTER TABLE IF EXISTS public.pago
+    ADD CONSTRAINT pago_id_reservacion_fkey FOREIGN KEY (id_reservacion)
+    REFERENCES public.reservacion (id_reservacion) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.reservacion
+    ADD CONSTRAINT reservacion_id_cliente_fkey FOREIGN KEY (id_cliente)
+    REFERENCES public.cliente (id_cliente) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.reservacion
+    ADD CONSTRAINT reservacion_id_habitacion_fkey FOREIGN KEY (id_habitacion)
+    REFERENCES public.habitacion (id_habitacion) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
