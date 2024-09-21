@@ -1,6 +1,6 @@
 #Lista de habitaciones en el hotel Kaligula - Interfaz
-#Versión 1.2
-#Fecha: 08/09/2024
+#Versión 1.3
+#Fecha: 21/09/2024
 #Autor: Luis Alberto Reyes Cruz
 
 #Correciones: Cambios realizados en la tipografía, en pro de mejor legibilidad. Arial 12
