@@ -119,7 +119,8 @@ def limpiar_texto():
 #Ventana principal
 
 ventana = tk.Tk()
-ventana.title("Lista de Habitaciones")
+ventana.title("Lista de habitaciones - Hotel Kaligula")
+ventana.geometry("800x600")
 
 #Botones
 
