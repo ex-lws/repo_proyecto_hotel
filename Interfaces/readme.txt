@@ -1,4 +1,2 @@
-El objetivo de la interfaz principal es poder mostrar al recepcionista todas las habitaciones disponibles en el hotel.
-Con habitaciones disponibles se hace referencia a aquellas con las que cuenta el hotel, sin importar su ocupación, es decir únicamente sus activos.
-
-Inicio de desarrollo: 6/09/2024
+En la carpeta GUI están guardadas todas las imagenes relacionadas con las interfaces de usuario.
+Se está utilizando como tecnología de diseño pyqt5 y qt designer.
