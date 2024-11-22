@@ -1,0 +1,84 @@
+¡Claro! Vamos a detallar el proceso de agregar otra clase o ventana en tu menú principal y mostrarla al hacer clic en un botón. Aquí te explicaré los pasos con base en el código que compartiste:
+
+Pasos para agregar una nueva ventana o clase
+Supongamos que queremos agregar una nueva ventana llamada VentanaModulo2. Aquí está cómo hacerlo paso a paso:
+
+1. Crear la nueva clase (ventana)
+Primero, creamos la nueva clase VentanaModulo2, que será la ventana que se mostrará cuando el usuario haga clic en un botón en el menú principal.
+
+python
+Copiar código
+class VentanaModulo2(WindowModulo2, FormModulo2):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        
+        # Aquí puedes agregar conexiones, como botones o cualquier otro widget
+        self.boton_volver.clicked.connect(self.volver_menu)
+        
+    def volver_menu(self):
+        # Regresa al menú principal
+        self.close()  # Cierra esta ventana
+        self.ventana_menu = VentanaMenuPrincipal()  # Crea una nueva instancia del menú principal
+        self.ventana_menu.show()
+Explicación:
+
+VentanaModulo2: Es una nueva clase que heredará de las interfaces WindowModulo2 y FormModulo2 (cargadas por uic.loadUiType).
+El botón boton_volver dentro de VentanaModulo2 te permitirá regresar al menú principal, cerrando la ventana actual y creando una nueva instancia del menú principal.
+2. Agregar el botón en el menú principal
+En tu clase VentanaMenuPrincipal, necesitamos agregar un botón que cargue esta nueva ventana.
+
+python
+Copiar código
+class VentanaMenuPrincipal(WindowMenu, FormMenu):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        
+        # Conectar botones
+        self.mostrar_ayuda.clicked.connect(self.abrir_ventana_ayuda)
+        self.mostrar_habitaciones.clicked.connect(self.abrir_ventana_modulo_1)
+        self.mostrar_modulo_2.clicked.connect(self.abrir_ventana_modulo_2)  # Nuevo botón
+        
+        self.salir_al_login.clicked.connect(self.salir)
+
+    def abrir_ventana_ayuda(self):
+        self.ventana_ayuda = VentanaAyuda()
+        self.ventana_ayuda.show()
+        self.hide()
+
+    def abrir_ventana_modulo_1(self):
+        self.ventana_modulo_1 = VentanaModulo1()
+        self.ventana_modulo_1.show()
+        self.hide()
+
+    def abrir_ventana_modulo_2(self):
+        self.ventana_modulo_2 = VentanaModulo2()  # Crea la nueva ventana
+        self.ventana_modulo_2.show()  # Muestra la nueva ventana
+        self.hide()  # Oculta el menú principal
+Explicación:
+
+Hemos agregado un nuevo botón self.mostrar_modulo_2 que, al hacer clic, llamará al método abrir_ventana_modulo_2.
+Este método crea una instancia de VentanaModulo2 y la muestra, además de ocultar el menú principal (self.hide()).
+3. Agregar el botón en el archivo .ui del menú principal
+Debes asegurarte de tener el botón correspondiente en el archivo .ui que se utiliza para generar el diseño del menú principal. Esto lo puedes hacer utilizando Qt Designer o directamente editando el archivo .ui.
+
+Abre tu archivo menu.ui en Qt Designer.
+Añade un nuevo botón (por ejemplo, mostrar_modulo_2) que represente la opción para abrir la nueva ventana VentanaModulo2.
+Guarda el archivo .ui y asegúrate de que esté correctamente cargado con uic.loadUiType.
+4. Conectar el botón en el código
+Asegúrate de que el botón esté correctamente conectado a la función que abre la nueva ventana en tu código. Este paso ya lo cubrimos anteriormente, pero es importante recordar que el botón mostrar_modulo_2 debe estar vinculado al método abrir_ventana_modulo_2.
+
+5. Verificación y pruebas
+Después de agregar la nueva clase y el botón en el menú principal, es importante probar que el flujo funcione como esperas:
+
+Al hacer clic en el botón mostrar_modulo_2, se debe abrir la nueva ventana VentanaModulo2.
+La ventana debe tener un botón o una forma de regresar al menú principal (como ya se ha configurado con volvér_menu).
+El menú principal debe ocultarse correctamente cuando se abra una nueva ventana y mostrarse nuevamente cuando se cierre.
+Resumen de los pasos:
+Crear la nueva ventana (VentanaModulo2), heredando de WindowModulo2 y FormModulo2.
+Agregar un botón en el menú principal que abrirá esta nueva ventana.
+Conectar el botón en el menú principal con la función abrir_ventana_modulo_2.
+Agregar el botón en el archivo .ui y asegurarte de que esté bien referenciado.
+Verificar el flujo y las transiciones entre ventanas, asegurándote de que cada una se abra y cierre correctamente.
+Este proceso te permite agregar nuevas funcionalidades (ventanas) de forma modular y manejable. Si tienes alguna pregunta adicional o necesitas más detalles en algún paso, no dudes en preguntar.

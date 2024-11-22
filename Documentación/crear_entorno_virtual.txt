@@ -1,0 +1,24 @@
+PASO PARA CREAR UN ENTORNO VIRTUAL
+
+1.- Crear una carpeta que alojará al proyecto.
+
+2.- Ir al CMD y entrar dentro de la ruta de dicha carpeta: 
+
+Ejemplo; cd C:\Users\guich\OneDrive\Documentos\Desarrollo\Python\carpeta_proyecto
+
+3.- Crear el entorno virtual:
+
+python -m venv entorno_virtual_proyecto
+
+4.- Activar el entorno virtual: 
+
+entorno_virtual_proyecto\Scripts\activate.bat
+
+5.- Desactivar el entorno cada que termines de programar:
+
+deactivate
+
+
+
+
+
