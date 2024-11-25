@@ -1,0 +1,11 @@
+Brainstorming = lluvia de ideas, técnica para poder generar ideas creativas. (Requiere colaboración y libre expresión)
+Las ideas generadas deben ser evaluadas, a fin de desarrollarlas de manera colaborativa.
+
+Análisis competitivo = fortalezas y debilidades de la competencia, a fin de definir mejor los requerimientos de la propia empresa. Por ejemplo, un FODA tras en análisis.
+
+Entrevistas = Permiten recabar información para definir los requerimientos, debe tener un objetivo claro, planearse y analizarse. 
+
+Cuestionarios = Preguntas claras y concisas, mezcla de preguntas abiertas y cerradas. El cuestionario deber de ser distribuido a un grupo representativo de usuarios.
+Por último deben recopilar y analizar las respuestas a fin de identificar tendencias. 
+
+Tarea = Realizar un cuestionario virtual, orientado al usuario final. Aplicarlo en 10 personas. 
